@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-$dbHost     = "localhost";
+$dbHost     = "mysql"; // localhost, 127.0.0.1:27017
 $dbUsername = "root";
-$dbPassword = "";
-$dbName     = "photos";
+$dbPassword = $_ENV["DEV_ROOT_PASSWORD"]; //''
+$dbName     = $_ENV["DEV_DATABASE"]; // photos
 
 // Create database connection
 $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
