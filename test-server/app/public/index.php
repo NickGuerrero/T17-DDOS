@@ -1,3 +1,12 @@
+<?php
+require_once "bootstrap.php";
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Sanitize here
+$uri = explode('/', $uri);
+if(isset($_GET['action']) && isset($_GET['id'])) {
+    $objFeedController = new ImageController();
+    $objFeedController->{"image"}($db);
+}
+?>
 <!DOCTYPE html>
 <header>
     <title>File upload </title>
@@ -16,10 +25,10 @@
         <h2>Uploaded Images<h2>
         <?php
             // Include the database configuration file
-            include 'dbConfig.php';
+            //include 'dbConfig.php';
 
             // Get images from the database
-        $query = $db->query("SELECT * FROM images ORDER BY uploaded_on DESC");
+        $query = $db->query("SELECT * FROM images ORDER BY uploaded_on DESC LIMIT 10");
         if($query->num_rows > 0){
             while($row = $query->fetch_assoc()){
                 $imageURL = 'uploads/'.$row["file_name"];
