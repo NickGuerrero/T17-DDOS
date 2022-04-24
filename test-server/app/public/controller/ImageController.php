@@ -14,8 +14,12 @@ class ImageController extends BaseController {
                 $contentType = 'Content-Type: image/png';
                 $imageModel = new ImageModel();
                 $image_row = $imageModel->getImage($arrQueryStringParams['id'], $db);
-                $img_loc = mysqli_fetch_row($image_row)[1]; // 1 should be the image path
-                $responseData = file_get_contents("/app/public/uploads/" . $img_loc);
+                if($image_row->num_rows <= 0){
+                   throw new Exception("Resource does not exist");
+                } else {
+                    $img_loc = mysqli_fetch_row($image_row)[1]; // 1 should be the image path
+                    $responseData = file_get_contents("/app/public/uploads/" . $img_loc);
+                }
             } catch(Exception $e) {
                 $strErrorDesc = $e->getMessage();
                 $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';
