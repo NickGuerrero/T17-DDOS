@@ -1,5 +1,12 @@
+### Environment Files ###
 *.env
 *.env.*
+
+### Image Files ###
+*.png
+*.jpg
+*.jpeg
+*.gif
 
 ### VS Code ###
 .vscode/
