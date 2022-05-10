@@ -4,10 +4,11 @@
 class ImageModel {
     
     /**
-    function __construct(){
-        require_once "/app/public/dbConfig.php";
-        $scope = 0;
-    }**/
+    *function __construct(){
+    *    require_once "/app/public/dbConfig.php";
+    *    $scope = 0;
+    *}
+    **/
     
     // POST: Must return id to retrieve image for later
     public function postImage($fileName, $db) {
@@ -22,7 +23,7 @@ class ImageModel {
     
     // DELETE
     public function deleteImage($id, $db) {
-        return $db->query("DELETE FROM images WHERE id =" . $id . "LIMIT 1");
+        return $db->query("DELETE FROM images WHERE id =" . $id . " LIMIT 1");
     }
     
 }

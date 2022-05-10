@@ -4,7 +4,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Sanitize here
 $uri = explode('/', $uri);
 if(isset($_GET['action']) && isset($_GET['id'])) {
     $objFeedController = new ImageController();
-    $objFeedController->{"image"}($db);
+    $objFeedController->{"image"}($db, $_GET['action']);
 }
 ?>
 <!DOCTYPE html>

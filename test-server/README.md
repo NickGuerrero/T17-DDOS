@@ -3,6 +3,10 @@ To prepare the server, launch with the command. You'll need the provided environ
 ```
 docker-compose --env-file ./.env.dev up
 ```
+You may need to publish the ports to access over ethernet
+```
+docker compose --env-file ./.env.dev --service-ports web up
+```
 To access the MariaDB server, access the container via the CLI and enter the password in the .env.dev file. It should default to root.
 ```
 mysql --password
