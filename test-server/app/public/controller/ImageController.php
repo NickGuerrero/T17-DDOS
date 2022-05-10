@@ -1,7 +1,7 @@
 <?php
 class ImageController extends BaseController {
     // /image API
-    public function image($db) {
+    public function image($db, $command = '') {
         $strErrorDesc = '';
         $contentType = 'Content-Type: application/json';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -24,12 +24,15 @@ class ImageController extends BaseController {
                 $strErrorDesc = $e->getMessage();
                 $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';
             }
-        } elseif(strtoupper($requestMethod) == 'POST') {
+        } elseif(strtoupper($requestMethod) == 'POST' && $command == 'post') {
             // Upload an image and return id
             try {
-                $targetDir = "/../uploads/";
+                $response_id = -1;
+                $statusMsg = "No Message";
+                $targetDir = "/app/public/uploads/";
                 $fileName = basename($_FILES["file"]["name"]);
                 $targetFilePath = $targetDir . $fileName;
+                $imageModel = new ImageModel();
                 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
                 $allowTypes = array('jpg','png','jpeg','gif','pdf');
                 // File handling, we'll rely on sending a multipart json request
@@ -52,7 +55,7 @@ class ImageController extends BaseController {
                 $strErrorDesc = $e->getMessage();
                 $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';
             }
-        } elseif(strtoupper($requestMethod) == 'DELETE') {
+        } elseif(strtoupper($requestMethod) == 'POST' && $command == 'delete') {
             // Upload an image and return id
             try {
                 $contentType = 'Content-Type: application/json';
@@ -60,7 +63,7 @@ class ImageController extends BaseController {
                 // Delete file from uploads
                 $image_row = $imageModel->getImage($arrQueryStringParams['id'], $db);
                 $img_loc = mysqli_fetch_row($image_row)[1];
-                $processed = unlink("/../uploads/" . $img_loc);
+                $processed = unlink("/app/public/uploads/" . $img_loc);
                 if($processed){
                     $image_row = $imageModel->deleteImage($arrQueryStringParams['id'] ,$db);
                     $responseData = json_encode(array('status' => "OK"));
