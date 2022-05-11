@@ -8,11 +8,13 @@ if [ "" = "$OK" ]; then
   sudo apt-get install $REQUIRED
 fi
 
-echo "Input IP Address:"
-read IP
+# Pull IP from the .env
+#echo "Input IP Address:"
+#read IP
 
-echo "Input Spoof IP Address:"
-read SPOOF
+#echo "Input Spoof IP Address:"
+#read SPOOF
+SPOOF=$(python ./randip.py)
 
 echo "Executing SYN Flood ..."
 flood () {

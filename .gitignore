@@ -10,3 +10,9 @@
 
 ### VS Code ###
 .vscode/
+
+### GoldenEye by jsiedl ###
+GoldenEye/
+
+### Log Files ###
+*.log

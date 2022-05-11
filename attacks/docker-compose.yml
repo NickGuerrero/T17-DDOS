@@ -1,0 +1,11 @@
+version: "3"
+services:
+    attacker1: # Use the build script to attack an IP
+        container_name: attacker1
+        env_file:
+            - ./.env
+        ports:
+            - "8080:80"
+        build:
+            context: .
+            dockerfile: ATK.Dockerfile
