@@ -7,7 +7,6 @@ import time
 # Use on localhost, may change as project develops
 # URL = "http://127.0.0.1"
 # URL = "http://" + os.environ['IP']
-URL = ""
 
 # Process 30 requests at a time
 REQNO = 30

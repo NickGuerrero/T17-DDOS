@@ -1,12 +1,8 @@
 #!/bin/bash
-IP="127.0.0.1"
-ID="2"
-# Remove clone, now pull from local
-# git clone https://github.com/jseidl/GoldenEye.git
 
 echo "Executing HTTP Flood ..."
 flood () {
-  python3 ./GoldenEye/goldeneye.py "http://$IP?action=get&id=$ID"
+  python3 ./GoldenEye/goldeneye.py "http://$IP?action=get&id=$ID" -w 1 -s 1
 }
 
 flood

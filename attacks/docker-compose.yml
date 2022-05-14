@@ -2,6 +2,8 @@ version: "3"
 services:
     attacker1: # Use the build script to attack an IP
         container_name: attacker1
+        stdin_open: true
+        tty: true
         env_file:
             - ./.env
         ports:
