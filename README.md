@@ -6,4 +6,4 @@ Our objective is to understand what is a DOS/DDOS attack and study solutions for
 - [X] Prepare the attacking scripts
 - [X] Run the experiment
 
-The logs (both text and wireshark) can be made available on request, since they contain somewhat private data on my system configurations.
+The logs (both text and wireshark) can be made available on request, since they contain somewhat private data on my system configurations. Final Note: This is not designed for production use and this project is no longer being maintained.
