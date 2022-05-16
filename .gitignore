@@ -3,10 +3,11 @@
 *.env.*
 
 ### Image Files ###
-*.png
 *.jpg
 *.jpeg
 *.gif
+test.png
+test1.png
 
 ### VS Code ###
 .vscode/
@@ -16,3 +17,6 @@ GoldenEye/
 
 ### Log Files ###
 *.log
+
+### Uploads File ###
+test-server/app/public/uploads/
