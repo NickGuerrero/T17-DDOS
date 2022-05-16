@@ -2,12 +2,30 @@ version: "3"
 services:
     attacker1: # Use the build script to attack an IP
         container_name: attacker1
+        image: ngdos
         stdin_open: true
         tty: true
         env_file:
             - ./.env
         ports:
             - "8080:80"
-        build:
-            context: .
-            dockerfile: ATK.Dockerfile
+    
+    attacker2: # Use the build script to attack an IP
+        container_name: attacker2
+        image: ngdos
+        stdin_open: true
+        tty: true
+        env_file:
+            - ./.env
+        ports:
+            - "8081:80"
+    
+    attacker3: # Use the build script to attack an IP
+        container_name: attacker3
+        image: ngdos
+        stdin_open: true
+        tty: true
+        env_file:
+            - ./.env
+        ports:
+            - "8082:80"

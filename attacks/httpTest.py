@@ -57,7 +57,7 @@ for i in range(REQNO):
 			error.append("No Error")
 	except Exception as e:
 		success.append(False)
-		error.append(e.message)
+		error.append("Bad")
 	finally:
 		end = time.time()
 		results.append(end - start - (delay * 2))

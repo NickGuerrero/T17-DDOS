@@ -11,12 +11,9 @@ git clone https://github.com/jseidl/GoldenEye.git
 Building the image
 ```
 docker build -t attack_container .
+docker build -t ngdos -f ATK.Dockerfile .
 ```
 Start-up command
 ```
 docker-compose --env-file ./.env up
 ```
-
-Temporary Storage
-RUN ./hpingsyn.sh
-ENTRYPOINT ["./goldenhttp.sh"]
