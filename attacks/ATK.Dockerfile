@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu
 
 COPY ./synattack.sh .
 COPY ./goldenhttp.sh .
